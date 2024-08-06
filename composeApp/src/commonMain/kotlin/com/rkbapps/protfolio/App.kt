@@ -12,6 +12,8 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import protfolio.composeapp.generated.resources.*
 import com.rkbapps.protfolio.theme.AppTheme
 import com.rkbapps.protfolio.theme.LocalThemeIsDark
@@ -22,6 +24,7 @@ import org.jetbrains.compose.resources.vectorResource
 
 @Composable
 internal fun App() = AppTheme {
+    val context = LocalNavigator.currentOrThrow
     Column(
         modifier = Modifier
             .fillMaxSize()
