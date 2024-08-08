@@ -5,11 +5,14 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -40,6 +43,13 @@ import androidx.compose.ui.window.Dialog
 import cafe.adriel.voyager.core.screen.Screen
 import com.rkbapps.protfolio.models.Tabs
 import com.rkbapps.protfolio.screens.pages.*
+import com.rkbapps.protfolio.theme.LocalThemeIsDark
+import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.resources.vectorResource
+import protfolio.composeapp.generated.resources.Res
+import protfolio.composeapp.generated.resources.ic_dark_mode
+import protfolio.composeapp.generated.resources.ic_light_mode
+import protfolio.composeapp.generated.resources.theme
 
 
 class HomeScreen :Screen {
@@ -79,6 +89,18 @@ class HomeScreen :Screen {
                             }
                         }
                     }
+                    var isDark by LocalThemeIsDark.current
+                    val icon = remember(isDark) {
+                        if (isDark) Res.drawable.ic_light_mode
+                        else Res.drawable.ic_dark_mode
+                    }
+                    IconButton(
+                        //modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp).widthIn(min = 200.dp),
+                        onClick = { isDark = !isDark },
+                        content = {
+                            Icon(vectorResource(icon), contentDescription = null)
+                        }
+                    )
                 }
             )
         }){innerPadding ->
@@ -112,6 +134,7 @@ class HomeScreen :Screen {
                                 tabs.forEach {
                                     DialogButton(it.title, isSelected = selectedTab.value == it.title){
                                         selectedTab.value = it.title
+                                        isDialogOpen.value = false
                                     }
                                 }
                             }
