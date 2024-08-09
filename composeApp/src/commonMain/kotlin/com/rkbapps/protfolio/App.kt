@@ -13,7 +13,6 @@ import com.rkbapps.protfolio.screens.HomeScreen
 
 @Composable
 internal fun App() = AppTheme {
-
     Navigator(screen = HomeScreen()){
         SlideTransition(it)
     }

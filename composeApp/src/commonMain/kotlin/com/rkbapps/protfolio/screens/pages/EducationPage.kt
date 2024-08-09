@@ -14,6 +14,9 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Text
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
@@ -27,9 +30,10 @@ import org.jetbrains.compose.resources.Font
 import protfolio.composeapp.generated.resources.IndieFlower_Regular
 import protfolio.composeapp.generated.resources.Res
 
+@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @Composable
 fun EducationPage() {
-
+    val widthSizeClass = calculateWindowSizeClass().widthSizeClass
     val educationList = remember {
         mutableStateListOf(
             EducationData("B.Tech in CSE","GMIT","2024","80%"),
@@ -41,7 +45,7 @@ fun EducationPage() {
     Column(modifier = Modifier.fillMaxSize(),//.verticalScroll(state = rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Spacer(modifier=Modifier.height(50.dp))
+        Spacer(modifier=Modifier.height(if (widthSizeClass!= WindowWidthSizeClass.Compact)50.dp else 0.dp))
         Text(Tabs.EDUCATION.title,
             modifier = Modifier.fillMaxWidth(),
             fontFamily = FontFamily(Font(Res.font.IndieFlower_Regular)),
@@ -50,7 +54,7 @@ fun EducationPage() {
         )
         Spacer(modifier = Modifier.height(10.dp))
 
-        Box(modifier = Modifier.fillMaxWidth(0.6f), contentAlignment = Alignment.Center){
+        Box(modifier = Modifier.fillMaxWidth(if(widthSizeClass!= WindowWidthSizeClass.Compact) 0.6f else 1.0f), contentAlignment = Alignment.Center){
             LazyVerticalGrid(
                 columns = GridCells.Adaptive(minSize = 250.dp),
             ){
@@ -64,16 +68,12 @@ fun EducationPage() {
 }
 
 @Composable
-fun EducationCards(
-
-    education:EducationData) {
+fun EducationCards(education:EducationData) {
 
     OutlinedCard(
         modifier = Modifier.padding(8.dp),
         onClick = {}){
-        Column (
-            modifier = Modifier.padding(16.dp),
-            ){
+        Column (modifier = Modifier.padding(16.dp),){
             Text(education.duration,style = MaterialTheme.typography.labelMedium)
             Text(education.title,style = MaterialTheme.typography.displaySmall)
             Text(education.institute,style = MaterialTheme.typography.labelMedium)

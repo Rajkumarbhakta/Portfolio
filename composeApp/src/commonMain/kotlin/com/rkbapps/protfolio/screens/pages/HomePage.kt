@@ -131,7 +131,7 @@ fun HomePage() {
                 Text(
                     text = stringResource(Res.string.name),
                     fontFamily = FontFamily(Font(Res.font.IndieFlower_Regular)),
-                    style = MaterialTheme.typography.displayLarge
+                    style = if (widthSizeClass!= WindowWidthSizeClass.Compact)MaterialTheme.typography.displayLarge else MaterialTheme.typography.displayMedium
                 )
                 Spacer(modifier = Modifier.size(8.dp))
                 Text("Android | Kotlin | Java | Flutter",style = MaterialTheme.typography.titleMedium)
