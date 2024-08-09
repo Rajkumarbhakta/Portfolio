@@ -4,7 +4,7 @@ import com.rkbapps.protfolio.App
 
 @OptIn(ExperimentalComposeUiApi::class)
 fun main() {
-    CanvasBasedWindow("Protfolio") {
+    CanvasBasedWindow("Portfolio") {
         App()
     }
 }
