@@ -1,19 +1,19 @@
 package com.rkbapps.protfolio
 
-import androidx.compose.animation.core.*
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
+
 import androidx.compose.runtime.*
-import cafe.adriel.voyager.navigator.Navigator
-import cafe.adriel.voyager.transitions.SlideTransition
-import protfolio.composeapp.generated.resources.*
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.rkbapps.protfolio.navigation.MainNavGraph
 import com.rkbapps.protfolio.theme.AppTheme
-import com.rkbapps.protfolio.screens.HomeScreen
 
 
 @Composable
-internal fun App() = AppTheme {
-    Navigator(screen = HomeScreen()){
-        SlideTransition(it)
-    }
+internal fun App(navController: NavHostController = rememberNavController()) = AppTheme {
+//    Navigator(screen = HomeScreen()){
+//        SlideTransition(it)
+//    }
+
+    MainNavGraph(navController)
+
 }

@@ -63,13 +63,7 @@ kotlin {
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.kotlinx.datetime)
-            implementation(libs.material3.window.size.class1.multiplatform)
-
-            //voyager
-            implementation(libs.voyager.navigator)
-            implementation(libs.voyager.transitions)
-            implementation(libs.voyager.screenModel)
-            implementation(libs.voyager.tabNavigator)
+            implementation(libs.material3.window.size)
 
             //navigation compose
             implementation(libs.androidx.navigation.compose)
