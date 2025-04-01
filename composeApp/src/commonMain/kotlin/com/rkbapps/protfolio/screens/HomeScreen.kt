@@ -48,6 +48,7 @@ import com.rkbapps.protfolio.screens.pages.ContactMePage
 import com.rkbapps.protfolio.screens.pages.EducationPage
 import com.rkbapps.protfolio.screens.pages.HomePage
 import com.rkbapps.protfolio.screens.pages.ProjectsPage
+import com.rkbapps.protfolio.screens.pages.SkillsPage
 import com.rkbapps.protfolio.theme.LocalThemeIsDark
 import com.rkbapps.protfolio.utils.getWindowSize
 import org.jetbrains.compose.resources.vectorResource
@@ -65,7 +66,7 @@ fun HomeScreen(navController: NavHostController){
     }
 
     val tabs = remember{
-        mutableStateListOf(Tabs.HOME,Tabs.ABOUT_ME,Tabs.EDUCATION,Tabs.PROJECTS,Tabs.CONTACT_ME)
+        mutableStateOf(Tabs.entries)
     }
     val selectedTab = rememberSaveable{
         mutableStateOf(Tabs.HOME.title)
@@ -85,7 +86,7 @@ fun HomeScreen(navController: NavHostController){
             },
             actions = {
                 if (widthSizeClass!=WindowWidthSizeClass.Compact){
-                    tabs.forEach {
+                    tabs.value.forEach {
                         TopBarActionButtons(it.title, isSelected = selectedTab.value == it.title){
                             selectedTab.value = it.title
                         }
@@ -114,8 +115,10 @@ fun HomeScreen(navController: NavHostController){
                 Tabs.HOME.title -> HomePage()
                 Tabs.ABOUT_ME.title -> AboutMePage()
                 Tabs.EDUCATION.title -> EducationPage()
+                Tabs.SKILLS.title -> SkillsPage()
                 Tabs.PROJECTS.title -> ProjectsPage()
                 Tabs.CONTACT_ME.title -> ContactMePage()
+                else -> HomePage()
             }
         }
 
@@ -132,7 +135,7 @@ fun HomeScreen(navController: NavHostController){
                         }
 
                         Column (modifier = Modifier.fillMaxWidth().padding(top = 50.dp)){
-                            tabs.forEach {
+                            tabs.value.forEach {
                                 DialogButton(it.title, isSelected = selectedTab.value == it.title){
                                     selectedTab.value = it.title
                                     isDialogOpen.value = false

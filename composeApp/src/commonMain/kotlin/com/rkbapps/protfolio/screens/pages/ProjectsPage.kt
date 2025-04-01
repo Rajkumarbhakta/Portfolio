@@ -22,6 +22,8 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.Stable
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -31,6 +33,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.rkbapps.protfolio.models.Tabs
+import com.rkbapps.protfolio.screens.composables.CommonHeader
 import com.rkbapps.protfolio.utils.getWindowSize
 import org.jetbrains.compose.resources.Font
 import org.jetbrains.compose.resources.painterResource
@@ -54,18 +57,10 @@ fun ProjectsPage(modifier: Modifier = Modifier) {
         )
     }
 
-    Column(modifier = Modifier.fillMaxSize(),//.verticalScroll(state = rememberScrollState()),
-        horizontalAlignment = Alignment.CenterHorizontally
+    CommonHeader(
+        tab = Tabs.PROJECTS,
+        widthSizeClass = widthSizeClass
     ) {
-        Spacer(modifier=Modifier.height(if (widthSizeClass!= WindowWidthSizeClass.Compact)50.dp else 0.dp))
-        Text(Tabs.EDUCATION.title,
-            modifier = Modifier.fillMaxWidth(),
-            fontFamily = FontFamily(Font(Res.font.IndieFlower_Regular)),
-            style = MaterialTheme.typography.displayLarge,
-            textAlign = TextAlign.Center
-        )
-        Spacer(modifier = Modifier.height(10.dp))
-
         Box(modifier = Modifier.fillMaxWidth(if(widthSizeClass!= WindowWidthSizeClass.Compact) 0.6f else 1.0f), contentAlignment = Alignment.Center){
             LazyVerticalGrid(columns = GridCells.Adaptive(minSize = 250.dp),){
                 items(projectList.size){
@@ -81,11 +76,11 @@ fun ProjectsPage(modifier: Modifier = Modifier) {
 fun ProjectCards(projectData:ProjectData) {
     val uriHandler = LocalUriHandler.current
     OutlinedCard(modifier = Modifier.padding(8.dp), onClick = {}){
-        Box(modifier = Modifier.padding(16.dp),){
+        Box(modifier = Modifier.padding(16.dp).fillMaxWidth().height(200.dp),){
             Column(modifier = Modifier.padding(bottom = 60.dp),){
                 Text(projectData.time,style = MaterialTheme.typography.labelMedium)
                 Text(projectData.title,style = MaterialTheme.typography.displaySmall)
-                Text(projectData.description,style = MaterialTheme.typography.labelMedium)
+                Text(projectData.description,style = MaterialTheme.typography.labelSmall)
             }
             Card(modifier = Modifier.align(Alignment.BottomEnd).padding(horizontal = 8.dp)) {
                 Row (modifier = Modifier.padding(8.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center){
@@ -116,6 +111,8 @@ fun ProjectCards(projectData:ProjectData) {
     }
 }
 
+@Immutable
+@Stable
 data class ProjectData(
     val title:String,
     val description:String,

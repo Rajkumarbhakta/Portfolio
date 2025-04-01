@@ -1,5 +1,6 @@
 package com.rkbapps.protfolio.screens.pages
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -17,6 +18,8 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.Stable
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -25,6 +28,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.rkbapps.protfolio.models.Tabs
+import com.rkbapps.protfolio.screens.composables.CommonHeader
 import com.rkbapps.protfolio.utils.getWindowSize
 import org.jetbrains.compose.resources.Font
 import protfolio.composeapp.generated.resources.IndieFlower_Regular
@@ -41,19 +45,10 @@ fun EducationPage() {
             EducationData("X","Gopinathpur Devayatan Vidyapith","2018","85%"),
         )
     }
-
-    Column(modifier = Modifier.fillMaxSize(),//.verticalScroll(state = rememberScrollState()),
-        horizontalAlignment = Alignment.CenterHorizontally
+    CommonHeader(
+        tab = Tabs.EDUCATION,
+        widthSizeClass = widthSizeClass
     ) {
-        Spacer(modifier=Modifier.height(if (widthSizeClass!= WindowWidthSizeClass.Compact)50.dp else 0.dp))
-        Text(Tabs.EDUCATION.title,
-            modifier = Modifier.fillMaxWidth(),
-            fontFamily = FontFamily(Font(Res.font.IndieFlower_Regular)),
-            style = MaterialTheme.typography.displayLarge,
-            textAlign = TextAlign.Center
-        )
-        Spacer(modifier = Modifier.height(10.dp))
-
         Box(modifier = Modifier.fillMaxWidth(if(widthSizeClass!= WindowWidthSizeClass.Compact) 0.6f else 1.0f), contentAlignment = Alignment.Center){
             LazyVerticalGrid(
                 columns = GridCells.Adaptive(minSize = 250.dp),
@@ -63,17 +58,15 @@ fun EducationPage() {
                 }
             }
         }
-
     }
 }
 
 @Composable
 fun EducationCards(education:EducationData) {
-
     OutlinedCard(
         modifier = Modifier.padding(8.dp),
         onClick = {}){
-        Column (modifier = Modifier.padding(16.dp),){
+        Column (modifier = Modifier.height(200.dp).padding(16.dp), verticalArrangement = Arrangement.Center){
             Text(education.duration,style = MaterialTheme.typography.labelMedium)
             Text(education.title,style = MaterialTheme.typography.displaySmall)
             Text(education.institute,style = MaterialTheme.typography.labelMedium)
@@ -84,6 +77,8 @@ fun EducationCards(education:EducationData) {
 
 }
 
+@Immutable
+@Stable
 data class EducationData(
     val title:String,
     val institute:String,
