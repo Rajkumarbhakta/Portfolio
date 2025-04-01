@@ -16,7 +16,6 @@ import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Text
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
-import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
@@ -26,6 +25,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.rkbapps.protfolio.models.Tabs
+import com.rkbapps.protfolio.utils.getWindowSize
 import org.jetbrains.compose.resources.Font
 import protfolio.composeapp.generated.resources.IndieFlower_Regular
 import protfolio.composeapp.generated.resources.Res
@@ -33,7 +33,7 @@ import protfolio.composeapp.generated.resources.Res
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @Composable
 fun EducationPage() {
-    val widthSizeClass = calculateWindowSizeClass().widthSizeClass
+    val widthSizeClass = getWindowSize().widthSizeClass
     val educationList = remember {
         mutableStateListOf(
             EducationData("B.Tech in CSE","GMIT","2024","80%"),

@@ -23,10 +23,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
-import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -41,6 +39,7 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import com.rkbapps.protfolio.theme.LocalThemeIsDark
+import com.rkbapps.protfolio.utils.getWindowSize
 import kotlinx.coroutines.isActive
 import org.jetbrains.compose.resources.Font
 import org.jetbrains.compose.resources.stringResource
@@ -58,7 +57,7 @@ import protfolio.composeapp.generated.resources.theme
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @Composable
 fun HomePage() {
-    val widthSizeClass = calculateWindowSizeClass().widthSizeClass
+    val widthSizeClass = getWindowSize().widthSizeClass
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -74,7 +73,7 @@ fun HomePage() {
             LaunchedEffect(Unit) {
                 while (isActive) {
                     val remaining = (target - rotate.value) / target
-                    //rotate.animateTo(target, animationSpec = tween((1_000 * remaining).toInt(), easing = LinearEasing))
+                    rotate.animateTo(target, animationSpec = tween((1_000 * remaining).toInt(), easing = LinearEasing))
                     rotate.snapTo(0f)
                 }
             }

@@ -11,7 +11,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
-import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -19,6 +18,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.rkbapps.protfolio.models.Tabs
+import com.rkbapps.protfolio.utils.getWindowSize
 import org.jetbrains.compose.resources.Font
 import protfolio.composeapp.generated.resources.IndieFlower_Regular
 import protfolio.composeapp.generated.resources.Res
@@ -26,7 +26,7 @@ import protfolio.composeapp.generated.resources.Res
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @Composable
 fun AboutMePage() {
-    val widthSizeClass = calculateWindowSizeClass().widthSizeClass
+    val widthSizeClass = getWindowSize().widthSizeClass
     Column(modifier = Modifier.fillMaxSize().verticalScroll(state = rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

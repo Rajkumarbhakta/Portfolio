@@ -21,7 +21,6 @@ import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Text
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
-import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
@@ -32,6 +31,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.rkbapps.protfolio.models.Tabs
+import com.rkbapps.protfolio.utils.getWindowSize
 import org.jetbrains.compose.resources.Font
 import org.jetbrains.compose.resources.painterResource
 import protfolio.composeapp.generated.resources.IndieFlower_Regular
@@ -43,7 +43,7 @@ import protfolio.composeapp.generated.resources.google_play
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @Composable
 fun ProjectsPage(modifier: Modifier = Modifier) {
-    val widthSizeClass = calculateWindowSizeClass().widthSizeClass
+    val widthSizeClass = getWindowSize().widthSizeClass
 
     val projectList = remember {
         mutableStateListOf(

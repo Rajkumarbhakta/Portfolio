@@ -97,7 +97,6 @@ fun HomeScreen(navController: NavHostController){
                     else Res.drawable.ic_dark_mode
                 }
                 IconButton(
-                    //modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp).widthIn(min = 200.dp),
                     onClick = { isDark = !isDark },
                     content = {
                         Icon(vectorResource(icon), contentDescription = null)
