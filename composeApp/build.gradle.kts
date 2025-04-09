@@ -1,6 +1,7 @@
 import com.android.build.api.dsl.ManagedVirtualDevice
 import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+import org.jetbrains.kotlin.compose.compiler.gradle.ComposeFeatureFlag
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
@@ -14,6 +15,7 @@ plugins {
     alias(libs.plugins.buildConfig)
     alias(libs.plugins.kotlinx.serialization)
 }
+
 
 kotlin {
     androidTarget {
@@ -92,6 +94,10 @@ kotlin {
         }
 
     }
+}
+
+composeCompiler {
+    featureFlags.add(ComposeFeatureFlag.OptimizeNonSkippingGroups)
 }
 
 android {

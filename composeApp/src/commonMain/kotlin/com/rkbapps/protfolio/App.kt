@@ -10,10 +10,5 @@ import com.rkbapps.protfolio.theme.AppTheme
 
 @Composable
 internal fun App(navController: NavHostController = rememberNavController()) = AppTheme {
-//    Navigator(screen = HomeScreen()){
-//        SlideTransition(it)
-//    }
-
     MainNavGraph(navController)
-
 }
