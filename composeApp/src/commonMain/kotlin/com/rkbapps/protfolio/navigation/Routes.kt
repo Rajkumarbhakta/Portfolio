@@ -7,3 +7,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 @SerialName("home")
 object HomePage
+
+@Serializable
+@SerialName("home-new")
+object HomeNew

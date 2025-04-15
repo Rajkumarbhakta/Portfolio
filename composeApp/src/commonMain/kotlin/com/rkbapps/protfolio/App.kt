@@ -9,6 +9,8 @@ import com.rkbapps.protfolio.theme.AppTheme
 
 
 @Composable
-internal fun App(navController: NavHostController = rememberNavController()) = AppTheme {
+internal fun App(navController: NavHostController = rememberNavController()) = AppTheme(
+    darkTheme = false
+) {
     MainNavGraph(navController)
 }

@@ -38,6 +38,8 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import com.rkbapps.protfolio.navigation.HomeNew
 import com.rkbapps.protfolio.theme.LocalThemeIsDark
 import com.rkbapps.protfolio.utils.getWindowSize
 import kotlinx.coroutines.isActive
@@ -56,7 +58,7 @@ import protfolio.composeapp.generated.resources.theme
 
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @Composable
-fun HomePage() {
+fun HomePage(navController: NavHostController) {
     val widthSizeClass = getWindowSize().widthSizeClass
     Column(
         modifier = Modifier
@@ -160,5 +162,15 @@ fun HomePage() {
         ) {
             Text(stringResource(Res.string.open_github))
         }
+        OutlinedButton(
+            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp).widthIn(min = 200.dp),
+            onClick = {
+                navController.navigate(HomeNew)
+            },
+        ) {
+            Text("New Page")
+        }
+
+
     }
 }

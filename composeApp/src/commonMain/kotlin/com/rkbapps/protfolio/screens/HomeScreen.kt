@@ -113,13 +113,13 @@ fun HomeScreen(navController: NavHostController){
             .padding(horizontal = 16.dp, vertical = 8.dp)
         ){
             when(selectedTab.value){
-                Tabs.HOME.title -> HomePage()
+                Tabs.HOME.title -> HomePage(navController)
                 Tabs.ABOUT_ME.title -> AboutMePage()
                 Tabs.EDUCATION.title -> EducationPage()
                 Tabs.SKILLS.title -> SkillsPage()
                 Tabs.PROJECTS.title -> ProjectsPage()
                 Tabs.CONTACT_ME.title -> ContactMePage()
-                else -> HomePage()
+                else -> HomePage(navController)
             }
         }
 
