@@ -4,7 +4,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -17,7 +16,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalUriHandler
@@ -27,11 +25,8 @@ import androidx.compose.ui.unit.dp
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.vectorResource
 import protfolio.composeapp.generated.resources.Res
-import protfolio.composeapp.generated.resources.android
-import protfolio.composeapp.generated.resources.android_studio
 import protfolio.composeapp.generated.resources.github_mark
 import protfolio.composeapp.generated.resources.google_play_outlined
-import protfolio.composeapp.generated.resources.ic_cyclone
 import protfolio.composeapp.generated.resources.instagram
 import protfolio.composeapp.generated.resources.linkdin
 import protfolio.composeapp.generated.resources.my_image
@@ -58,8 +53,8 @@ fun ProfileComposable(
         )
 
         Text(
-            text = "Rajkumar Bhakta is an enthusiastic Android developer with a deep passion for creating innovative and user-friendly mobile applications. His dedication to mastering the Android platform and staying up-to-date with the latest technologies drives his work, making him a valuable contributor to the ever-evolving world of mobile development. Rajkumar's commitment to excellence is evident in every project he undertakes, as he strives to deliver high-quality, impactful solutions that meet user needs and exceed expectations."
-            ,color = MaterialTheme.colorScheme.primary,
+            text = "Rajkumar Bhakta is an enthusiastic Android developer with a deep passion for creating innovative and user-friendly mobile applications. His dedication to mastering the Android platform and staying up-to-date with the latest technologies drives his work, making him a valuable contributor to the ever-evolving world of mobile development. Rajkumar's commitment to excellence is evident in every project he undertakes, as he strives to deliver high-quality, impactful solutions that meet user needs and exceed expectations.",
+            color = MaterialTheme.colorScheme.primary,
             style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.SemiBold),
             textAlign = TextAlign.Justify
         )
@@ -69,16 +64,16 @@ fun ProfileComposable(
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             val uriHandler = LocalUriHandler.current
-            SocialItems(icon = vectorResource(Res.drawable.github_mark)){
+            SocialItems(icon = vectorResource(Res.drawable.github_mark)) {
                 uriHandler.openUri("https://github.com/Rajkumarbhakta")
             }
-            SocialItems(icon = vectorResource(Res.drawable.linkdin)){
+            SocialItems(icon = vectorResource(Res.drawable.linkdin)) {
                 uriHandler.openUri("https://www.linkedin.com/in/rajkumar-bhakta")
             }
-            SocialItems(icon = vectorResource(Res.drawable.google_play_outlined)){
+            SocialItems(icon = vectorResource(Res.drawable.google_play_outlined)) {
                 uriHandler.openUri("https://play.google.com/store/apps/dev?id=8595458926248803860")
             }
-            SocialItems(icon = vectorResource(Res.drawable.instagram)){
+            SocialItems(icon = vectorResource(Res.drawable.instagram)) {
                 uriHandler.openUri("https://www.instagram.com/rkbapps/")
             }
         }
@@ -87,18 +82,18 @@ fun ProfileComposable(
 }
 
 @Composable
-fun SocialItems(icon: ImageVector, colorIcon: Boolean=false, onClick: () -> Unit){
+fun SocialItems(icon: ImageVector, colorIcon: Boolean = false, onClick: () -> Unit) {
     Card(
         onClick = onClick,
         elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
     ) {
-        if (colorIcon){
+        if (colorIcon) {
             Image(
                 imageVector = icon,
                 contentDescription = "Social Icon",
                 modifier = Modifier.padding(8.dp).size(24.dp)
             )
-        }else{
+        } else {
             Icon(
                 imageVector = icon,
                 contentDescription = "Social Icon",

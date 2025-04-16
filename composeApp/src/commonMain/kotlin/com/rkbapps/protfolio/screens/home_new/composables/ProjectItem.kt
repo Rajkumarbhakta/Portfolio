@@ -36,56 +36,70 @@ import protfolio.composeapp.generated.resources.google_play
 fun ProjectItem(
     project: Project,
     onClick: () -> Unit
-){
+) {
     OutlinedCard(
-        modifier = Modifier.widthIn(max=200.dp),
+        modifier = Modifier.widthIn(max = 200.dp),
         onClick = onClick,
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
-        Column(modifier = Modifier.padding(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            if (project.drawableResource!=null){
+        Column(
+            modifier = Modifier.padding(8.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            if (project.drawableResource != null) {
                 Image(
                     painter = painterResource(project.drawableResource),
                     contentDescription = project.name,
-                    modifier = Modifier.size(width =200.dp ,height=150.dp)
+                    modifier = Modifier.size(width = 200.dp, height = 150.dp)
                         .clip(RoundedCornerShape(10.dp))
-                        .background(color = Color.White)
-                    ,
+                        .background(color = Color.White),
 
                     contentScale = ContentScale.Crop
                 )
-            }else{
+            } else {
                 AsyncImage(
                     uri = project.image,
                     contentDescription = project.name,
-                    modifier = Modifier.size(width =200.dp ,height=150.dp)
+                    modifier = Modifier.size(width = 200.dp, height = 150.dp)
                         .background(color = Color.White)
                         .clip(RoundedCornerShape(10.dp)),
                     contentScale = ContentScale.Crop
                 )
             }
-            Text(project.name,
-                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary),
-                maxLines = 1,overflow = TextOverflow.Ellipsis
+            Text(
+                project.name,
+                style = MaterialTheme.typography.titleMedium.copy(
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.primary
+                ),
+                maxLines = 1, overflow = TextOverflow.Ellipsis
             )
-            Text(project.description, maxLines = 2, style = MaterialTheme.typography.titleSmall, overflow = TextOverflow.Ellipsis)
+            Text(
+                project.description,
+                maxLines = 2,
+                style = MaterialTheme.typography.titleSmall,
+                overflow = TextOverflow.Ellipsis
+            )
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 val uriHandler = LocalUriHandler.current
                 project.playStoreLink?.let {
-                    SocialItems(icon = vectorResource(Res.drawable.google_play), colorIcon = true){
+                    SocialItems(icon = vectorResource(Res.drawable.google_play), colorIcon = true) {
                         uriHandler.openUri(it)
                     }
                 }
                 project.githubLink?.let {
-                    SocialItems(icon = vectorResource(Res.drawable.github_mark), colorIcon = false){
+                    SocialItems(
+                        icon = vectorResource(Res.drawable.github_mark),
+                        colorIcon = false
+                    ) {
                         uriHandler.openUri(it)
                     }
                 }
                 project.pubDevLink?.let {
-                    SocialItems(icon = vectorResource(Res.drawable.dart), colorIcon = true){
+                    SocialItems(icon = vectorResource(Res.drawable.dart), colorIcon = true) {
                         uriHandler.openUri(it)
                     }
                 }

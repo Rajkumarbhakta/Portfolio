@@ -1,7 +1,7 @@
 package com.rkbapps.protfolio
 
 
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.rkbapps.protfolio.navigation.MainNavGraph

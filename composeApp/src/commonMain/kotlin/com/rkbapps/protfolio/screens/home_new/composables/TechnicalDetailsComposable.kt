@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
@@ -39,10 +38,10 @@ import protfolio.composeapp.generated.resources.visual_studio_code
 
 @Composable
 fun TechnicalDetailsComposable(
-    modifier: Modifier= Modifier
+    modifier: Modifier = Modifier
 ) {
 
-    val projects= remember {
+    val projects = remember {
         mutableStateListOf(
             Project(
                 name = "TooAi",
@@ -56,7 +55,8 @@ fun TechnicalDetailsComposable(
                 drawableResource = Res.drawable.makut,
                 description = "\"CGPA Calculator - MAKAUT\" is a simple application that can help you to calculate all types of grade if you are a MAKAUT student for fill up the Scholarship Applications.",
                 playStoreLink = "https://play.google.com/store/apps/details?id=com.rkbapps.makautsgpaygpacalculator"
-            ),Project(
+            ),
+            Project(
                 name = "Physics Galaxy",
                 drawableResource = Res.drawable.physics_galaxy,
                 description = "A Educational android application with payment and batch functionality.",
@@ -67,16 +67,17 @@ fun TechnicalDetailsComposable(
                 drawableResource = Res.drawable.neetflix,
                 description = "A movie tv series list android application consuming TMDB api. ",
                 githubLink = "https://github.com/Rajkumarbhakta/Neetflix",
-            ),Project(
+            ),
+            Project(
                 name = "Pixy",
                 drawableResource = Res.drawable.pixy,
                 description = "A wallpaper application consuming unsplash application.",
                 githubLink = "https://github.com/Rajkumarbhakta/Pixy",
             ),
 
-        )
+            )
     }
-    val libraries= remember {
+    val libraries = remember {
         mutableStateListOf(
             Project(
                 name = "Nested Menu Bar",
@@ -92,25 +93,32 @@ fun TechnicalDetailsComposable(
             KnownTechnology(
                 name = "Kotlin",
                 image = Res.drawable.kotlin
-            ),KnownTechnology(
+            ),
+            KnownTechnology(
                 name = "Java",
                 image = Res.drawable.java
-            ),KnownTechnology(
+            ),
+            KnownTechnology(
                 name = "Android",
                 image = Res.drawable.android
-            ), KnownTechnology(
+            ),
+            KnownTechnology(
                 name = "Jetpack Compose",
                 image = Res.drawable.jetpack_compose
-            ),KnownTechnology(
+            ),
+            KnownTechnology(
                 name = "Compose Multiplatform",
                 image = Res.drawable.compose_multiplatform
-            ),KnownTechnology(
+            ),
+            KnownTechnology(
                 name = "Kotlin Multiplatform",
                 image = Res.drawable.kotlin
-            ),KnownTechnology(
+            ),
+            KnownTechnology(
                 name = "Retrofit",
                 image = Res.drawable.square_retrofit
-            ),KnownTechnology(
+            ),
+            KnownTechnology(
                 name = "Firebase Suite",
                 image = Res.drawable.firebase
             ),
@@ -121,10 +129,12 @@ fun TechnicalDetailsComposable(
             KnownTechnology(
                 name = "Dart",
                 image = Res.drawable.dart
-            ),KnownTechnology(
+            ),
+            KnownTechnology(
                 name = "Flutter",
                 image = Res.drawable.flutter
-            ),KnownTechnology(
+            ),
+            KnownTechnology(
                 name = "Flutter Bloc",
                 image = Res.drawable.bloc
             ),
@@ -135,19 +145,24 @@ fun TechnicalDetailsComposable(
             KnownTechnology(
                 name = "Android Studio",
                 image = Res.drawable.android_studio
-            ),KnownTechnology(
+            ),
+            KnownTechnology(
                 name = "IntelliJ Idea",
                 image = Res.drawable.intellij_idea
-            ),KnownTechnology(
+            ),
+            KnownTechnology(
                 name = "VS code",
                 image = Res.drawable.visual_studio_code
-            ),KnownTechnology(
+            ),
+            KnownTechnology(
                 name = "Git",
                 image = Res.drawable.git_icon
-            ),KnownTechnology(
+            ),
+            KnownTechnology(
                 name = "Github",
                 image = Res.drawable.github_mark
-            ),KnownTechnology(
+            ),
+            KnownTechnology(
                 name = "Firebase",
                 image = Res.drawable.firebase
             ),
@@ -157,7 +172,7 @@ fun TechnicalDetailsComposable(
 
     Column(modifier = modifier) {
         CommonHeader(title = "Technologies")
-        FlowRow (
+        FlowRow(
             verticalArrangement = Arrangement.spacedBy(8.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
@@ -169,7 +184,7 @@ fun TechnicalDetailsComposable(
             }
         }
         CommonHeader(title = "Tools")
-        FlowRow (
+        FlowRow(
             verticalArrangement = Arrangement.spacedBy(8.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
@@ -177,7 +192,7 @@ fun TechnicalDetailsComposable(
                 KnownTechnologyItem(
                     image = it.image,
                     name = it.name,
-                    colorFilter = if (it.name=="Github") ColorFilter.tint(MaterialTheme.colorScheme.onSurface) else null
+                    colorFilter = if (it.name == "Github") ColorFilter.tint(MaterialTheme.colorScheme.onSurface) else null
                 ) {}
             }
         }

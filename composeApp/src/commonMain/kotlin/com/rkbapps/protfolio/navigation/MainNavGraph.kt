@@ -4,16 +4,12 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.rkbapps.protfolio.screens.HomeScreen
 import com.rkbapps.protfolio.screens.home_new.HomeNewScreen
 
 @Composable
-fun MainNavGraph(navController: NavHostController){
-    NavHost(navController=navController,startDestination = HomePage){
+fun MainNavGraph(navController: NavHostController) {
+    NavHost(navController = navController, startDestination = HomePage) {
         composable<HomePage> {
-            HomeScreen(navController=navController)
-        }
-        composable<HomeNew> {
             HomeNewScreen(navController)
         }
     }
