@@ -31,6 +31,7 @@ import protfolio.composeapp.generated.resources.Res
 import protfolio.composeapp.generated.resources.dart
 import protfolio.composeapp.generated.resources.github_mark
 import protfolio.composeapp.generated.resources.google_play
+import protfolio.composeapp.generated.resources.web
 
 @Composable
 fun ProjectItem(
@@ -87,6 +88,11 @@ fun ProjectItem(
                 val uriHandler = LocalUriHandler.current
                 project.playStoreLink?.let {
                     SocialItems(icon = vectorResource(Res.drawable.google_play), colorIcon = true) {
+                        uriHandler.openUri(it)
+                    }
+                }
+                project.webLink?.let {
+                    SocialItems(icon = vectorResource(Res.drawable.web), colorIcon = false) {
                         uriHandler.openUri(it)
                     }
                 }

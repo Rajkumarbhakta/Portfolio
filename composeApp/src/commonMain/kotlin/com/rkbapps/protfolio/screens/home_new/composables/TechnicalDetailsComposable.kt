@@ -16,6 +16,7 @@ import protfolio.composeapp.generated.resources.Res
 import protfolio.composeapp.generated.resources.android
 import protfolio.composeapp.generated.resources.android_studio
 import protfolio.composeapp.generated.resources.bloc
+import protfolio.composeapp.generated.resources.canvas_logo
 import protfolio.composeapp.generated.resources.compose_multiplatform
 import protfolio.composeapp.generated.resources.dart
 import protfolio.composeapp.generated.resources.firebase
@@ -61,6 +62,13 @@ fun TechnicalDetailsComposable(
                 drawableResource = Res.drawable.physics_galaxy,
                 description = "A Educational android application with payment and batch functionality.",
                 playStoreLink = "https://play.google.com/store/apps/details?id=com.rkbapps.physicsgalaxy"
+            ),Project(
+                name = "Canvas",
+                drawableResource = Res.drawable.canvas_logo,
+                description = "A simple canvas drawing application using compose multiplatform",
+                playStoreLink = "https://play.google.com/store/apps/details?id=com.rkbapps.canvas",
+                webLink = "https://me.rkbapps.in/canvas_build",
+                githubLink = "https://github.com/Rajkumarbhakta/Canvas"
             ),
             Project(
                 name = "Neetflix",

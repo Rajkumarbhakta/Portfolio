@@ -9,5 +9,7 @@ data class Project(
     val description: String,
     val playStoreLink: String? = null,
     val githubLink: String? = null,
-    val pubDevLink: String? = null
+    val pubDevLink: String? = null,
+    val webLink: String? = null,
+    val appStoreLink: String? = null
 )
