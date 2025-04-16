@@ -7,14 +7,19 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -22,23 +27,28 @@ import androidx.compose.ui.unit.dp
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.vectorResource
 import protfolio.composeapp.generated.resources.Res
+import protfolio.composeapp.generated.resources.android
+import protfolio.composeapp.generated.resources.android_studio
 import protfolio.composeapp.generated.resources.github_mark
 import protfolio.composeapp.generated.resources.google_play_outlined
 import protfolio.composeapp.generated.resources.ic_cyclone
 import protfolio.composeapp.generated.resources.instagram
 import protfolio.composeapp.generated.resources.linkdin
+import protfolio.composeapp.generated.resources.my_image
 
 @Composable
 fun ProfileComposable(
-    modifier: Modifier
+    modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = modifier.fillMaxHeight().padding(vertical = 8.dp, horizontal = 16.dp),
+        modifier = modifier.padding(vertical = 8.dp, horizontal = 16.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
-        Image(painter = painterResource(Res.drawable.ic_cyclone),
+        Image(
+            painter = painterResource(Res.drawable.my_image),
             contentDescription = "Profile Image",
-            modifier = Modifier.size(180.dp)
+            modifier = Modifier.size(180.dp).clip(CircleShape),
+            contentScale = ContentScale.Crop
         )
 
         Text(
@@ -77,14 +87,23 @@ fun ProfileComposable(
 }
 
 @Composable
-fun SocialItems(icon: ImageVector,onClick: () -> Unit){
+fun SocialItems(icon: ImageVector, colorIcon: Boolean=false, onClick: () -> Unit){
     Card(
-        onClick = onClick
+        onClick = onClick,
+        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
     ) {
-        Icon(
-            imageVector = icon,
-            contentDescription = "Social Icon",
-            modifier = Modifier.padding(8.dp).size(24.dp)
-        )
+        if (colorIcon){
+            Image(
+                imageVector = icon,
+                contentDescription = "Social Icon",
+                modifier = Modifier.padding(8.dp).size(24.dp)
+            )
+        }else{
+            Icon(
+                imageVector = icon,
+                contentDescription = "Social Icon",
+                modifier = Modifier.padding(8.dp).size(24.dp)
+            )
+        }
     }
 }
