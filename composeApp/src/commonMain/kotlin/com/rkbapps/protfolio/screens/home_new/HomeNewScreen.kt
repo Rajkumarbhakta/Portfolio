@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -63,24 +64,22 @@ fun HomeNewScreen(navController: NavHostController) {
                     .padding(vertical = 8.dp, horizontal = 16.dp)
             ) {
                 ProfileComposable(
-                    modifier = Modifier.fillMaxHeight().weight(40f)
-                        .verticalScroll(rememberScrollState())
+                    modifier = Modifier.fillMaxHeight().weight(40f).verticalScroll(rememberScrollState())
                 )
                 TechnicalDetailsComposable(
-                    modifier = Modifier.fillMaxHeight().weight(60f)
-                        .verticalScroll(rememberScrollState())
+                    modifier = Modifier.fillMaxHeight().weight(60f).verticalScroll(rememberScrollState())
                 )
             }
         } else {
             Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
-                Column(
-                    modifier = Modifier.fillMaxWidth(0.8f)
-                        .padding(it)
+                LazyColumn (
+                    modifier = Modifier.fillMaxWidth()
                         .padding(vertical = 8.dp, horizontal = 16.dp)
-                        .verticalScroll(rememberScrollState())
+                        .verticalScroll(rememberScrollState()),
+                    contentPadding = it,
                 ) {
-                    ProfileComposable()
-                    TechnicalDetailsComposable()
+                    item { ProfileComposable() }
+                    item{TechnicalDetailsComposable()}
                 }
             }
         }
