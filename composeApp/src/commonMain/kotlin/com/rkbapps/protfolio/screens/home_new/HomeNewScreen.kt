@@ -74,8 +74,7 @@ fun HomeNewScreen(navController: NavHostController) {
             Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
                 LazyColumn (
                     modifier = Modifier.fillMaxWidth()
-                        .padding(vertical = 8.dp, horizontal = 16.dp)
-                        .verticalScroll(rememberScrollState()),
+                        .padding(vertical = 8.dp, horizontal = 16.dp),
                     contentPadding = it,
                 ) {
                     item { ProfileComposable() }

@@ -1,7 +1,7 @@
 import com.android.build.api.dsl.ManagedVirtualDevice
 import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-import org.jetbrains.compose.reload.ComposeHotRun
+import org.jetbrains.compose.reload.gradle.ComposeHotRun
 import org.jetbrains.kotlin.compose.compiler.gradle.ComposeFeatureFlag
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
@@ -61,8 +61,7 @@ kotlin {
             implementation(compose.material3)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
-//            implementation(libs.coil)
-//            implementation(libs.coil.network.ktor)
+
             implementation(libs.napier)
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.serialization.json)
@@ -72,11 +71,14 @@ kotlin {
             //navigation compose
             implementation(libs.androidx.navigation.compose)
 
+            //coil
+            implementation(libs.coil)
+            implementation(libs.coil.network.ktor)
+
             //sketch
             implementation(libs.sketch.compose)
             implementation(libs.sketch.http)
             implementation(libs.sketch.svg)
-
 
         }
 
@@ -125,7 +127,7 @@ android {
     //https://developer.android.com/studio/test/gradle-managed-devices
     @Suppress("UnstableApiUsage")
     testOptions {
-        managedDevices.devices {
+        managedDevices.allDevices {
             maybeCreate<ManagedVirtualDevice>("pixel5").apply {
                 device = "Pixel 5"
                 apiLevel = 34
@@ -169,6 +171,6 @@ buildConfig {
 composeCompiler {
     featureFlags.add(ComposeFeatureFlag.OptimizeNonSkippingGroups)
 }
-tasks.register<ComposeHotRun>("runHot") {
+tasks.withType<ComposeHotRun>().configureEach {
     mainClass.set("MainKt")
 }
